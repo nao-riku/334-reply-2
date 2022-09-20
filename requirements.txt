@@ -1,0 +1,3 @@
+timeout-decorator
+pysocks
+requests_oauthlib
