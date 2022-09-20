@@ -1,0 +1,32 @@
+name: 334Ranker_rep
+
+on:
+  #schedule:
+  #  - cron: '27 1,5,9,13,17,21 * * *'
+  repository_dispatch:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+      - run: |
+          brew install tor
+          brew services start tor
+          pip install -r requirements.txt
+          
+      - name: Run Python
+        env:
+          CK: ${{ secrets.CK }}
+          CS: ${{ secrets.CS }}
+          AT: ${{ secrets.AT }}
+          AS: ${{ secrets.AS }}
+          BT: ${{ secrets.BT }}
+          URL2: ${{ secrets.URL2 }}
+          TZ: "Asia/Tokyo"
+        run: python app.py
