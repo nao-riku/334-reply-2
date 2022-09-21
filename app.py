@@ -183,24 +183,15 @@ def get_stream():
         
             except ConnectionError as e:
                 print(traceback.format_exc())
-                run+=1
-                if run <10:
-                    time.sleep(6)
-                    print("再接続します",run+"回目")
-                    continue
-                else:
-                    run=0
+                time.sleep(6)
+                print("再接続します"+str(run)+"回目")
+
             except Exception as e:
                 # some other error occurred.. stop the loop
                 print("Stopping loop because of un-handled error")
                 print(traceback.format_exc())
-                run+=1
-                if run <5:
-                    time.sleep(6)
-                    print("再接続します",run+"回目")
-                    continue
-                else:
-                    run=0
+                time.sleep(6)
+                print("再接続します"+str(run)+"回目")
               
     stream()
     
