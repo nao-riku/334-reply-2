@@ -191,7 +191,7 @@ def get_stream():
                 # some other error occurred.. stop the loop
                 print("Stopping loop because of un-handled error")
                 print(traceback.format_exc())
-                time.sleep(6)
+                time.sleep(15)
                 run+=1
                 print("再接続します"+str(run)+"回目")
               
