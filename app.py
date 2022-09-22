@@ -100,7 +100,7 @@ def get_stream():
     ]
     for num in range(7):
         if com_t(times[num], now, times[num + 1]):
-            start_time = datetime.datetime(times[num + 1].year, times[num + 1].month, times[num + 1].day, times[num + 1].hour, times[num + 1].minute, times[num + 1].second + 1)
+            start_time = datetime.datetime(times[num + 1].year, times[num + 1].month, times[num + 1].day, times[num + 1].hour, times[num + 1].minute, times[num + 1].second + 2)
             end_time = times[num + 2]
                 
     if start_time.hour != 2:
