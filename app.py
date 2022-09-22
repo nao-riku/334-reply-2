@@ -89,14 +89,14 @@ def get_stream():
     now = datetime.datetime.now()
     times = [
         datetime.datetime(now.year, now.month, now.day, 0, 0, 0),
-        datetime.datetime(now.year, now.month, now.day, 2, 47, 40),
-        datetime.datetime(now.year, now.month, now.day, 6, 47, 40),
-        datetime.datetime(now.year, now.month, now.day, 10, 47, 40),
-        datetime.datetime(now.year, now.month, now.day, 14, 47, 40),
-        datetime.datetime(now.year, now.month, now.day, 18, 47, 40),
-        datetime.datetime(now.year, now.month, now.day, 22, 47, 40),
-        datetime.datetime(now.year, now.month, now.day + 1, 2, 47, 40),
-        datetime.datetime(now.year, now.month, now.day + 1, 6, 47, 40)
+        datetime.datetime(now.year, now.month, now.day, 2, 35, 40),
+        datetime.datetime(now.year, now.month, now.day, 6, 35, 40),
+        datetime.datetime(now.year, now.month, now.day, 10, 47, 40),#####################
+        datetime.datetime(now.year, now.month, now.day, 14, 35, 40),
+        datetime.datetime(now.year, now.month, now.day, 18, 35, 40),
+        datetime.datetime(now.year, now.month, now.day, 22, 35, 40),
+        datetime.datetime(now.year, now.month, now.day + 1, 2, 35, 40),
+        datetime.datetime(now.year, now.month, now.day + 1, 6, 35, 40)
     ]
     for num in range(7):
         if com_t(times[num], now, times[num + 1]):
@@ -186,6 +186,7 @@ def get_stream():
                 time.sleep(6)
                 run+=1
                 print("再接続します"+str(run)+"回目")
+                print(datetime.datetime.now())
 
             except Exception as e:
                 # some other error occurred.. stop the loop
@@ -194,6 +195,7 @@ def get_stream():
                 time.sleep(15)
                 run+=1
                 print("再接続します"+str(run)+"回目")
+                print(datetime.datetime.now())
               
     stream()
     
