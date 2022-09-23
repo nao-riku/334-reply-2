@@ -91,7 +91,7 @@ def get_stream():
         datetime.datetime(now.year, now.month, now.day, 0, 0, 0),
         datetime.datetime(now.year, now.month, now.day, 2, 35, 40),
         datetime.datetime(now.year, now.month, now.day, 6, 35, 40),
-        datetime.datetime(now.year, now.month, now.day, 10, 47, 40),#####################
+        datetime.datetime(now.year, now.month, now.day, 10, 35, 40),
         datetime.datetime(now.year, now.month, now.day, 14, 35, 40),
         datetime.datetime(now.year, now.month, now.day, 18, 35, 40),
         datetime.datetime(now.year, now.month, now.day, 22, 35, 40),
