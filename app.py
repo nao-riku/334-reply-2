@@ -132,7 +132,6 @@ def get_stream():
                     for response_line in response.iter_lines():
                         if response_line:
                             json_response = json.loads(response_line)
-                            print(json_response)
                             tweet_id = json_response["data"]["id"]
                             t_time = TweetId2Time(int(tweet_id))
 			
