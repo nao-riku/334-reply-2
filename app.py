@@ -163,10 +163,53 @@ def get_stream():
                                                     rep_text2 = "\n参考記録: " + world_rank[key][6]
                                                 else:
                                                     rep_text2 = ""
-                                                rep_text = json_response["includes"]["users"][0]["name"] + "\n\n最高pt: " + world_rank[key][2] + "\n歴代: " + str(world_rank[key][3]) + " / " + world_rank["累計"][0] + "\n現在pt: " + world_rank[key][4] + "\n世界ランク: " + str(world_rank[key][5]) + " / " + world_rank["現在"][0] + rep_text2 +\
-                                                "\n出場試合数: " + str(world_rank[key][7]) + "\n自己ベスト: " + world_rank[key][0] + " (" + str(world_rank[key][1]) + "回)\n戦績: 🥇×" + str(world_rank[key][8]) + " 🥈×" + str(world_rank[key][9]) + " 🥉×" + str(world_rank[key][10]) + " 📋×" + str(world_rank[key][11]) 
+
+                                                pt = float(world_rank[key][2])
+                                                if pt < 500:
+                                                    rank = "E"
+                                                elif pt < 1000:
+                                                    rank = "E+"
+                                                elif pt < 1500:
+                                                    rank = "D"
+                                                elif pt < 2000:
+                                                    rank = "D+"
+                                                elif pt < 2500:
+                                                    rank = "C"
+                                                elif pt < 3000:
+                                                    rank = "C+"
+                                                elif pt < 3500:
+                                                    rank = "B"
+                                                elif pt < 4000:
+                                                    rank = "B+"
+                                                elif pt < 4500:
+                                                    rank = "A"
+                                                elif pt < 5000:
+                                                    rank = "A+"
+                                                elif pt < 5500:
+                                                    rank = "S1"
+                                                elif pt < 6000:
+                                                    rank = "S2"
+                                                elif pt < 6500:
+                                                    rank = "S3"
+                                                elif pt < 7000:
+                                                    rank = "S4"
+                                                elif pt < 7500:
+                                                    rank = "S5"
+                                                elif pt < 8000:
+                                                    rank = "S6"
+                                                elif pt < 8500:
+                                                    rank = "S7"
+                                                elif pt < 9000:
+                                                    rank = "S8"
+                                                elif pt < 9500:
+                                                    rank = "S9"
+                                                else:
+                                                    rank = "RoR"
+                                                    
+                                                rep_text = json_response["includes"]["users"][0]["name"] + "\n\n級位: " + rank + "\n 最高pt: " + world_rank[key][2] + "\n 歴代: " + str(world_rank[key][3]) + " / " + world_rank["累計"][0] + "\n 現在pt: " + world_rank[key][4] + "\n 世界ランク: " + str(world_rank[key][5]) + " / " + world_rank["現在"][0] + rep_text2 +\
+                                                "\n出場試合数: " + str(world_rank[key][7]) + "\n自己ベスト: " + world_rank[key][0] + " (" + str(world_rank[key][1]) + "回)\n戦績: 🥇×" + str(world_rank[key][8]) + " 🥈×" + str(world_rank[key][9]) + " 🥉×" + str(world_rank[key][10]) + " 📋×" + str(world_rank[key][11])
                                             else:
-                                                rep_text = json_response["includes"]["users"][0]["name"] + "\n\n最高pt: 0.00\n歴代: - / " + world_rank["累計"][0] + "\n現在pt: 0.00\n世界ランク: - / " + world_rank["現在"][0] + "\n出場試合数: 0\n自己ベスト: -\n戦績: 🥇×0 🥈×0 🥉×0 📋×0"
+                                                rep_text = json_response["includes"]["users"][0]["name"] + "\n\n最高pt: -\n歴代: - / " + world_rank["累計"][0] + "\n現在pt: -\n世界ランク: - / " + world_rank["現在"][0] + "\n出場試合数: 0\n自己ベスト: -\n戦績: 🥇×0 🥈×0 🥉×0 📋×0"
                                         else:
                                             rep_text = "申し訳ありません\nランク照会可能時間はは3:34:30ごろ - 23:59:59となっております"
                                     else:
