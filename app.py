@@ -104,7 +104,7 @@ def get_stream():
         if com_t(times[num], now, times[num + 1]):
             start_time = datetime.datetime(times[num + 1].year, times[num + 1].month, times[num + 1].day, times[num + 1].hour, times[num + 1].minute, times[num + 1].second + 2)
             end_time = times[num + 2]
-    #start_time = datetime.datetime(now.year, now.month, now.day, now.hour, now.minute + 1, 10)
+    start_time = datetime.datetime(now.year, now.month, now.day, now.hour, now.minute, now.second + 10)
                 
     if start_time.hour != 2:
         get_result()
