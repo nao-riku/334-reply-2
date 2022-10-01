@@ -15,12 +15,27 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.8'
-      - run: |
+          
+      - name: setting
+        id: set
+        continue-on-error: true
+        run: |
           brew install tor
           brew services start tor
           pip install -r requirements.txt
           
+      - name: Error handling
+        if: ${{ steps.set.outcome == 'failure' }}
+        run: |
+          echo "Error handling"
+          curl -X POST https://api.github.com/repos/nao-riku/334-reply-2/dispatches \
+               -H 'authorization: Bearer '${{ secrets.KEY }} \
+               --data '{"event_type": "Error handling"}'
+          exit 1
+          
       - name: Run Python
+        id: run
+        continue-on-error: true
         env:
           CK: ${{ secrets.CK }}
           CS: ${{ secrets.CS }}
@@ -30,3 +45,12 @@ jobs:
           URL2: ${{ secrets.URL2 }}
           TZ: "Asia/Tokyo"
         run: python app.py
+
+      - name: Error handling
+        if: ${{ steps.run.outcome == 'failure' }}
+        run: |
+          echo "Error handling"
+          curl -X POST https://api.github.com/repos/nao-riku/test/dispatches \
+               -H 'authorization: Bearer '${{ secrets.KEY }} \
+               --data '{"event_type": "Error handling"}'
+          exit 1
