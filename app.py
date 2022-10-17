@@ -129,7 +129,7 @@ def get_stream():
 
         while run:
             try:
-                with requests.get("https://api.twitter.com/2/tweets/search/stream?tweet.fields=referenced_tweets&expansions=author_id&user.fields=name", auth=bearer_oauth, stream=True, timeout=timeout) as response:
+                with requests.get("https://api.twitter.com/2/tweets/search/stream?tweet.fields=referenced_tweets&expansions=author_id,in_reply_to_user_id&user.fields=name", auth=bearer_oauth, stream=True, timeout=timeout) as response:
                     if response.status_code != 200:
                         raise Exception("Cannot get stream (HTTP {}): {}".format(response.status_code, response.text))
                     for response_line in response.iter_lines():
@@ -144,7 +144,7 @@ def get_stream():
                             if com_t(start_time, t_time, end_time):
                         
                                 tweet_text = json_response["data"]["text"]
-                                if ("@Rank334" in tweet_text or "@rank334" in tweet_text) and json_response["data"]["author_id"] != '1558892196069134337':
+                                if ("@Rank334" in tweet_text or "@rank334" in tweet_text) and json_response["data"]["author_id"] != '1558892196069134337' and json_response["data"]["in_reply_to_user_id"] != '1558892196069134337':
                                     reply_id = json_response["data"]["id"]
                                     rep_text = ""
 						
