@@ -144,7 +144,7 @@ def get_stream():
                             if com_t(start_time, t_time, end_time):
                         
                                 tweet_text = json_response["data"]["text"]
-                                if ("@Rank334" in tweet_text or "@rank334" in tweet_text) and json_response["data"]["author_id"] != '1558892196069134337' and json_response["data"]["in_reply_to_user_id"] != '1558892196069134337':
+                                if ("@Rank334" in tweet_text or "@rank334" in tweet_text) and json_response["data"]["author_id"] != '1558892196069134337':
                                     reply_id = json_response["data"]["id"]
                                     rep_text = ""
 						
