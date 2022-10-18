@@ -149,7 +149,7 @@ def get_stream():
                                     rep_text = ""
 						
                                     if 'referenced_tweets' in json_response["data"]:
-                                        if json_response["data"]['referenced_tweets'][0]["type"] == "replied_to":
+                                        if json_response["data"]['referenced_tweets'][0]["type"] == "replied_to" and json_response["data"]["in_reply_to_user_id"] != '1558892196069134337':
                                             orig_id = json_response["data"]['referenced_tweets'][0]["id"]
                                             orig_time = TweetId2Time(int(orig_id))
                                             rep_text = "ツイート時刻: " + TimeToStr(orig_time)
