@@ -147,6 +147,11 @@ def get_stream():
                                 if ("@Rank334" in tweet_text or "@rank334" in tweet_text) and json_response["data"]["author_id"] != '1558892196069134337':
                                     reply_id = json_response["data"]["id"]
                                     rep_text = ""
+                                    
+                                    if json_response["includes"]["users"][0]["name"] == '︎︎':
+                                        user_name = "@" + json_response["includes"]["users"][0]["username"]
+                                    else:
+                                        user_name = json_response["includes"]["users"][0]["name"]
 						
                                     if 'referenced_tweets' in json_response["data"]:
                                         if json_response["data"]['referenced_tweets'][0]["type"] == "replied_to" and json_response["data"]["in_reply_to_user_id"] != '1558892196069134337':
@@ -206,10 +211,10 @@ def get_stream():
                                                 else:
                                                     rank = "RoR"
                                                     
-                                                rep_text = json_response["includes"]["users"][0]["name"] + "\n\n級位: " + rank + "\n⠀最高pt: " + world_rank[key][2] + "\n⠀歴代: " + str(world_rank[key][3]) + " / " + world_rank["累計"][0] + "\n⠀現在pt: " + world_rank[key][4] + "\n⠀世界ランク: " + str(world_rank[key][5]) + " / " + world_rank["現在"][0] + rep_text2 +\
+                                                rep_text = user_name + "\n\n級位: " + rank + "\n⠀最高pt: " + world_rank[key][2] + "\n⠀歴代: " + str(world_rank[key][3]) + " / " + world_rank["累計"][0] + "\n⠀現在pt: " + world_rank[key][4] + "\n⠀世界ランク: " + str(world_rank[key][5]) + " / " + world_rank["現在"][0] + rep_text2 +\
                                                 "\n出場試合数: " + str(world_rank[key][7]) + "\n自己ベスト: " + world_rank[key][0] + " (" + str(world_rank[key][1]) + "回)\n戦績: 🥇×" + str(world_rank[key][8]) + " 🥈×" + str(world_rank[key][9]) + " 🥉×" + str(world_rank[key][10]) + " 📋×" + str(world_rank[key][11])
                                             else:
-                                                rep_text = json_response["includes"]["users"][0]["name"] + "\n\n最高pt: -\n歴代: - / " + world_rank["累計"][0] + "\n現在pt: -\n世界ランク: - / " + world_rank["現在"][0] + "\n出場試合数: 0\n自己ベスト: -\n戦績: 🥇×0 🥈×0 🥉×0 📋×0"
+                                                rep_text = user_name + "\n\n最高pt: -\n歴代: - / " + world_rank["累計"][0] + "\n現在pt: -\n世界ランク: - / " + world_rank["現在"][0] + "\n出場試合数: 0\n自己ベスト: -\n戦績: 🥇×0 🥈×0 🥉×0 📋×0"
                                         else:
                                             rep_text = "申し訳ありません\nランク照会可能時間はは3:34:30ごろ - 23:59:59となっております"
                                     else:
@@ -218,7 +223,7 @@ def get_stream():
                                             if key in today_result:
                                                 rep_text = today_result[key][1] + "\n\n" + start_str + "の334結果\nresult: +" + today_result[key][2] + " [sec]\nrank: " + today_result[key][0] + " / " + today_result["参加者数"][0]
                                             else:
-                                                rep_text = json_response["includes"]["users"][0]["name"] + "\n\n" + start_str + "の334結果\nresult: DQ\nrank: DQ / " + today_result["参加者数"][0]
+                                                rep_text = user_name + "\n\n" + start_str + "の334結果\nresult: DQ\nrank: DQ / " + today_result["参加者数"][0]
                                         else:
                                             rep_text = "申し訳ありません\nランク照会可能時間はは3:34:30ごろ - 23:59:59となっております"
 							
