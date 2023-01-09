@@ -161,8 +161,8 @@ def get_stream():
         nonlocal start_time, end_time
         
         #if com(datetime.datetime(now.year, now.month, now.day, 22, 47, 40), start_time):
-        load_time = datetime.datetime(start_time.year, start_time.month, start_time.day, 3, 34, 30)
-        r_start_time = load_time #datetime.datetime(start_time.year, start_time.month, start_time.day, 3, 35, 0)
+        load_time = datetime.datetime(start_time.year, start_time.month, start_time.day, 3, 35, 0)
+        r_start_time = load_time #datetime.datetime(start_time.year, start_time.month, start_time.day, 3, 35, 15)
         start_str = start_time.date().strftime('%Y/%m/%d')
         r_end_time = datetime.datetime(start_time.year, start_time.month, start_time.day, 0, 0, 0) + datetime.timedelta(days=1)
     
@@ -222,7 +222,7 @@ def get_stream():
                                             else:
                                                 rep_text = user_name + "\n\n最高pt: -\n歴代: - / " + world_rank["累計"][0] + "\n現在pt: -\n世界ランク: - / " + world_rank["現在"][0] + "\n出場試合数: 0\n自己ベスト: -\n戦績: 🥇×0 🥈×0 🥉×0 📋×0"
                                         else:
-                                            rep_text = "申し訳ありません\nランク照会可能時間はは3:34:30ごろ - 23:59:59となっております"
+                                            rep_text = "申し訳ありません\nランク照会可能時間はは3:35ごろ - 23:59:59となっております"
                                     else:
                                         if com_t(r_start_time, t_time, r_end_time) and today_result != {} and world_rank != {}:
                                             key = str(json_response["data"]["author_id"])
@@ -231,7 +231,7 @@ def get_stream():
                                             else:
                                                 rep_text = user_name + "\n\n" + start_str + "の334結果\nresult: DQ\nrank: DQ / " + today_result["参加者数"][0]
                                         else:
-                                            rep_text = "申し訳ありません\nランク照会可能時間はは3:34:30ごろ - 23:59:59となっております"
+                                            rep_text = "申し訳ありません\nランク照会可能時間はは3:35ごろ - 23:59:59となっております"
 							
                                     params = {"text": rep_text, "reply": {"in_reply_to_tweet_id": reply_id}}
                                     response = oath.post("https://api.twitter.com/2/tweets", json = params)
